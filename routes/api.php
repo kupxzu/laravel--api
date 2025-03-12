@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-use App\Http\Controllers\UserController;
 
 Route::get('/employees', [EmployeeController::class, 'index']);  // Get all employees
 Route::get('/employee/{id}', [EmployeeController::class, 'show']);  // Get single employee by ID
