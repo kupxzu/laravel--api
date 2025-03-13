@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('employee_id')->constrained()->onDelete('cascade');
             $table->string('title');
+            $table->enum('type', ['admin', 'users']);
             $table->string('description');
             $table->timestamps();
         });

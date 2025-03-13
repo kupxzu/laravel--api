@@ -6,6 +6,7 @@ use App\Models\Message;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Exception;
+use App\Http\Controllers\NotificationController;
 
 class MessageController extends Controller
 {
@@ -68,6 +69,9 @@ class MessageController extends Controller
                 'title' => $request->title,
                 'description' => $request->description,
             ]);
+
+            // Create notifications for all other employees
+            app(NotificationController::class)->createPostNotification($message);
 
             return response()->json([
                 'status' => 'success',
