@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Message extends Model
 {
     use HasFactory;
 
@@ -15,15 +15,16 @@ class Employee extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'employee_id',
+        'title',
+        'description',
     ];
 
     /**
-     * Get the messages for the employee.
+     * Get the employee that owns the message.
      */
-    public function messages()
+    public function employee()
     {
-        return $this->hasMany(Message::class);
+        return $this->belongsTo(Employee::class);
     }
 }
